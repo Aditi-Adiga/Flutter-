@@ -1,4 +1,4 @@
-#Develop an application that tracks our daily Expenses and get a report chart. 
+# Develop an application that tracks our daily Expenses and get a report chart. 
  
 import 'package:flutter/material.dart'; 
  import 'package:fl_chart/fl_chart.dart';  
