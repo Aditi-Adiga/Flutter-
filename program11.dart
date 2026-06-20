@@ -9,7 +9,7 @@ class QuizApp extends StatefulWidget {
   _QuizAppState createState() => _QuizAppState(); 
 } 
 class _QuizAppState extends State { 
-  final List> _questions = [ 
+  final List<Map<String,Object>> _questions = [ 
     { 
       'question': 'What is the capital of India?', 
       'answers': [ 
@@ -51,7 +51,7 @@ class _QuizAppState extends State {
                     textAlign: TextAlign.center, 
                   ), 
                   SizedBox(height: 20), 
-                  ...(_questions[_currentIndex]['answers'] as List>).map((answer) { 
+                  ...(_questions[_currentIndex]['answers'] as List<Map<String,Object>>).map((answer) { 
                     return Padding( 
                       padding: const EdgeInsets.symmetric(vertical: 5), 
                       child: ElevatedButton( 
