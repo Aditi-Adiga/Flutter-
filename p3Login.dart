@@ -2,29 +2,18 @@
   
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: LoginScreen(),
-  ));
-}
+void main() => runApp(const MaterialApp(home: LoginScreen()));
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final emailController = TextEditingController();
-  final passController = TextEditingController();
-
-  String result = "";
-
-  @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
+    final passController = TextEditingController();
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      appBar: AppBar(title: const Text('Login')),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -33,14 +22,14 @@ class _LoginScreenState extends State<LoginScreen> {
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
-                labelText: "Email",
+                labelText: 'Email',
               ),
             ),
 
             TextField(
               controller: passController,
               decoration: const InputDecoration(
-                labelText: "Password",
+                labelText: 'Password',
               ),
               obscureText: true,
             ),
@@ -49,23 +38,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  if (emailController.text == "admin" &&
-                      passController.text == "1234") {
-                    result = "Login Successful";
-                  } else {
-                    result = "Login Failed";
-                  }
-                });
+                String msg =
+                    (emailController.text == "admin" &&
+                            passController.text == "1234")
+                        ? "Login Successful"
+                        : "Login Failed";
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(msg)),
+                );
               },
-              child: const Text("Login"),
-            ),
-
-            const SizedBox(height: 20),
-
-            Text(
-              result,
-              style: const TextStyle(fontSize: 18),
+              child: const Text('Login'),
             ),
           ],
         ),
